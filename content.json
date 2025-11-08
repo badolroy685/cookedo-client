@@ -1,0 +1,21 @@
+[
+    {
+        "id": "1",
+        "title": "Spaghetti Carbonara Recipe",
+        "description": "Learn the basics of JSON format and its uses in data interchange.",
+        "cuisine-type": "Italian",
+        "author": "Jane Doe",
+        "like-count": 150,
+        "published_date": "2023-01-15",
+        "img_url": ""
+        
+    },
+    {
+        "id": "2",
+        "title": "Advanced JSON Techniques",
+        "description": "Explore advanced features of JSON, including schema validation and parsing.",
+        "author": "John Smith",
+        "published_date": "2023-02-20",
+        "tags": ["JSON", "Advanced", "Schema"]
+    }
+]
