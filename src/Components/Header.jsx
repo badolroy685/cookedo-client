@@ -10,7 +10,7 @@ const Header = () => {
 
     return (
 
-    <div className="w-full fixed top-0 left-0 z-50">
+    <div className="w-full fixed top-0 left-0 z-50 ">
             
           
             <div className="relative z-10 p-6 text-white">
@@ -20,7 +20,7 @@ const Header = () => {
                         <a href="" className='text-xl hover'>Sign up</a>
 
                     </div>
-                    <div className='lg:mx-56 md:mx-24  md:py-5 py-3 md:px-5 px-3 mt-2 border-[#ff611d] border-solid border-[2px] flex justify-between'>
+                    <div className='lg:mx-56 md:mx-24 md:py-5 py-3 md:px-5 px-3 mt-2 border-[#ff611d] border-solid border-[2px] flex justify-between bg-[url("https://i.ibb.co/CKhHKnsR/flat-lay-thanksgiving-food-border-assortment-with-copy-space.jpg")] bg-cover bg-center  '>
                         <div className='text-3xl font-bold '><p>COOKEDO</p></div>
 
 

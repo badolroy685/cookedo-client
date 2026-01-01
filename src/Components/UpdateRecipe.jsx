@@ -1,212 +1,132 @@
-import React, { useState } from "react";
-import Swal from "sweetalert2"; // npm install sweetalert2
+import React, { useState } from 'react';
 
-const AddRecipe = () => {
-  const [recipe, setRecipe] = useState({
-    image: "",
-    title: "",
-    ingredients: "",
-    instructions: "",
-    cuisineType: "",
-    prepTime: "",
-    categories: [],
-    likeCount: 0,
-  });
+const UpdateRecipe = () => {
+  const [selected, setSelected] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
-      setRecipe((prev) => ({
-        ...prev,
-        categories: checked
-          ? [...prev.categories, value]
-          : prev.categories.filter((cat) => cat !== value),
-      }));
-    } else {
-      setRecipe((prev) => ({ ...prev, [name]: value }));
-    }
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Simulate storing in DB (replace with your API call / Firebase)
-    try {
-      // Example: await fetch("/api/recipes", { method: "POST", body: JSON.stringify(recipe) });
-      console.log(recipe);
-
-      Swal.fire({
-        icon: "success",
-        title: "Recipe Added!",
-        text: "Your recipe has been successfully added 🍲",
-        confirmButtonColor: "#f97316",
-      });
-
-      setRecipe({
-        image: "",
-        title: "",
-        ingredients: "",
-        instructions: "",
-        cuisineType: "",
-        prepTime: "",
-        categories: [],
-        likeCount: 0,
-      });
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Something went wrong!",
-        text: error.message,
-      });
-    }
-  };
-
+  const handleUpdateRecipe = event => {
+    event.preventDefault();
+   
+  } 
   return (
-    <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 my-10 text-black">
-      <h1 className="text-3xl font-bold text-orange-500 text-center mb-6">
-        Add a New Recipe 🍳
-      </h1>
+    <div >
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {/* Image */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Image URL:
-          </label>
-          <input
-            type="text"
-            name="image"
-            value={recipe.image}
-            onChange={handleChange}
-            placeholder="Enter image URL"
-            className="input input-bordered w-full bg-orange-50"
-          />
-        </div>
+      <div className="relative ">
+        <h1 className="relative z-10 text-center text-7xl font-bold text-yellow-500  py-20">
+          
+        </h1>
+        <div className="absolute inset-0 bg-[url('https://i.ibb.co.com/d0vSMJtx/hot-spicy-stew-eggplant-sweet-pepper-tomato-zucchini-mushrooms-flat-lay-top-view-1.jpg')] bg-cover bg-center opacity-50 md:h-56"></div>
+      </div>
+      <div className='lg:mx-56 md:mx-24 mx-6 my-20 bg-white p-10 rounded-xl'>
 
-        {/* Title */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">Title:</label>
-          <input
-            type="text"
-            name="title"
-            value={recipe.title}
-            onChange={handleChange}
-            placeholder="Recipe title"
-            className="input input-bordered w-full bg-orange-50"
-          />
-        </div>
+        <form onSubmit={handleUpdateRecipe}>
+          <h1 className='text-gray-800 text-4xl font-bold '>Update Your Recipe</h1>
+          <p className="text-gray-500 mb-10">Share your delicious creation with the world 🍲</p>
+          {/* --------Title  name ------------ */}
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-2 text-black'>
+            <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box   p-4 ">
+              <label className="label text-gray-800 text-xl">Title: <span className="text-red-500">*</span></label>
+              <input required type="text" name='title' className="text-black input w-full bg-orange-50 placeholder-gray-400" placeholder="Recipe name" />
+            </fieldset>
 
-        {/* Ingredients */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Ingredients:
-          </label>
-          <textarea
-            name="ingredients"
-            value={recipe.ingredients}
-            onChange={handleChange}
-            placeholder="List ingredients separated by commas"
-            className="textarea textarea-bordered w-full bg-orange-50"
-            rows="3"
-          />
-        </div>
+            {/* --------cuisine type---------- */}
+            <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box   p-4 ">
+              <label className="label text-gray-800 text-xl">Cuisine Type: <span className="text-red-500">*</span></label>
+              <select
+                required
+                name="cuisine"
+                value={selected}
+                onChange={(e) => setSelected(e.target.value)}
+                className="w-full p-3  rounded-lg outline-none focus:ring-2 focus:ring-yellow-400 placeholder-black text-black bg-orange-50"
+              >
+                <option value="" disabled>
+                  -- Select a category --
+                </option>
+                <option value="Italian">Italian</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Indian">Indian</option>
+                <option value="chinese">Chinese</option>
+                <option value="American">American</option>
+              </select>
+              {selected && (
+                <p className="mt-3 text-yellow-600 font-medium">
+                  You selected: {selected}
+                </p>
+              )}
 
-        {/* Instructions */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Instructions:
-          </label>
-          <textarea
-            name="instructions"
-            value={recipe.instructions}
-            onChange={handleChange}
-            placeholder="Step-by-step instructions"
-            className="textarea textarea-bordered w-full bg-orange-50"
-            rows="4"
-          />
-        </div>
+            </fieldset>
+            {/* -----------ingredients----------- */}
+            <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box   p-4 ">
+              <label className="label text-gray-800 text-xl">Ingredients: <span className="text-red-500">*</span></label>
+              <input required type="text" name='ingredients' className="input w-full bg-orange-50 placeholder-gray-400" placeholder="List ingredients separated by commas" />
+            </fieldset>
 
-        {/* Cuisine Type */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Cuisine Type:
-          </label>
-          <select
-            name="cuisineType"
-            value={recipe.cuisineType}
-            onChange={handleChange}
-            className="select select-bordered w-full bg-orange-50"
-          >
-            <option value="">Select cuisine</option>
-            <option>Italian</option>
-            <option>Mexican</option>
-            <option>Indian</option>
-            <option>Chinese</option>
-            <option>Others</option>
-          </select>
-        </div>
+            {/* ---------category---------- */}
+            <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box   p-4 ">
 
-        {/* Preparation Time */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Preparation Time (minutes):
-          </label>
-          <input
-            type="number"
-            name="prepTime"
-            value={recipe.prepTime}
-            onChange={handleChange}
-            className="input input-bordered w-full bg-orange-50"
-          />
-        </div>
+              <label className="label text-gray-800 text-xl">Categories: <span className="text-red-500">*</span></label>
+              <div className="grid grid-cols-2 gap-3">
+                {["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map(
+                  (cat) => (
+                    <label key={cat} className="flex items-center space-x-2">
+                      <input
+                        type="radio"
+                        name="category"
+                        value={cat}
+                        checked={selectedCategory === cat}
+                        onChange={() => handleCategoryChange(cat)}
+                      />
+                      <span>{cat}</span>
+                    </label>
+                  )
+                )}
+              </div>
+              {selectedCategory && (
+                <p className="mt-3 text-yellow-600 font-medium">
+                  Selected: {selectedCategory}
+                </p>
+              )}
+            </fieldset>
+            {/* -------Preparation Time ---------- */}
+            <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box   p-4 ">
+              <label className="label text-gray-800 text-xl">Preparation Time (minutes): <span className="text-red-500">*</span></label>
+              <input required type="number" min="1" name='Preparation-time' className="input w-full bg-orange-50 placeholder-gray-400" />
+            </fieldset>
 
-        {/* Categories */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Categories:
-          </label>
-          <div className="grid grid-cols-2 gap-3">
-            {["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map(
-              (cat) => (
-                <label key={cat} className="flex items-center space-x-2">
-                  <input
-                    type="checkbox"
-                    name="categories"
-                    value={cat}
-                    checked={recipe.categories.includes(cat)}
-                    onChange={handleChange}
-                  />
-                  <span>{cat}</span>
-                </label>
-              )
-            )}
+            {/* --------------Likes Count ----------- */}
+            <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box   p-4 ">
+              <label className="label text-gray-800 text-xl">Likes Count:</label>
+              <input type="number" name='likes' className="input w-full bg-orange-50 placeholder-gray-400" placeholder="0" />
+            </fieldset>
+
           </div>
-        </div>
+          {/* --------------Instructions ----------- */}
+          <fieldset className="fieldset bg-orange-100 border-base-300 rounded-box mt-2  p-4 ">
+            <label className="label text-gray-800 text-xl">Instructions: <span className="text-red-500">*</span></label>
+            <textarea required name='instruction' rows="4" className="input w-full bg-orange-50 text-black placeholder-gray-400 min-h-[100px] p-2" placeholder="Step-by-step instructions"></textarea>
+          </fieldset>
 
-        {/* Like Count */}
-        <div>
-          <label className="block text-gray-700 font-medium mb-2">
-            Like Count:
-          </label>
-          <input
-            type="number"
-            name="likeCount"
-            value={recipe.likeCount}
-            readOnly
-            className="input input-bordered w-full bg-orange-100 cursor-not-allowed"
-          />
-        </div>
+          {/* -----------Image URL ------------  */}
+          <fieldset className="fieldset bg-orange-100 rounded-box  p-4 my-2">
+            <label className="label text-gray-800 text-xl">Image URL <span className="text-red-500">*</span></label>
+            <input required type="url" name='img-url' className="input w-full bg-orange-50 placeholder-gray-400 text-black" placeholder="https://example.com/image.jpg" />
+          </fieldset>
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="btn w-full bg-orange-500 hover:bg-orange-600 text-white text-lg"
-        >
-          Add Recipe
-        </button>
-      </form>
+          <input type="submit" className='btn w-full rounded-xl btn-warning ' value="Add Recipe" />
+        </form>
+      </div>
+
+
+
+
+
+
     </div>
   );
 };
 
-export default AddRecipe;
+export default UpdateRecipe;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoHeart } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const RecipeCard = ({ recipe }) => {
@@ -85,9 +86,14 @@ const RecipeCard = ({ recipe }) => {
                             ? instruction.slice(0, 220) + (instruction.length > 220 ? '...' : '')
                             : 'No instructions provided.'}
                     </p>
-                    <button className="btn bg-yellow-400 border-none text-gray-800 mt-5">See Details</button>
+                   <Link to={`/recipe/${_id}`} className="w-full block">
+                    <button className="btn w-full bg-yellow-400 border-none text-gray-800 mt-5">See Details</button>
+                   </Link>
                     <button onClick={() => handleDelete(_id)} className="btn btn-error ">Delete Recipe</button>
-
+                    <Link to={`updateRecipe/${_id}`}>
+                    <button className='w-full bg-green-400 border-none btn text-gray-800'>Update Recipe</button>
+                    </Link>
+                
                 </div>
             </div>
 

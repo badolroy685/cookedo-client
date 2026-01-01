@@ -5,11 +5,16 @@ import App from './App.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router";
+} from "react-router-dom";
 import MainLayout from './Layouts/MainLayout.jsx';
 import Home from './Components/Home.jsx';
 import AddRecipe from './Components/AddRecipe.jsx';
 import UpdateRecipe from './Components/UpdateRecipe.jsx';
+import RecipeDetails from './Components/RecipeDetails.jsx';
+import Signup from './Components/layouts/Signup.jsx';
+import Signin from './Components/layouts/Signin.jsx';
+import AuthProvider from './Components/context/AuthProvider.jsx';
+import Users from './Components/Users.jsx';
 
 const router = createBrowserRouter([
   {
@@ -26,8 +31,26 @@ const router = createBrowserRouter([
         Component: AddRecipe
       },
       {
-        path: "updateRecipe",
+        path: "recipe/:id",
+        Component: RecipeDetails,
+        loader: ({params}) => fetch(`http://localhost:5000/recipes/${params.id}`)
+      },
+      {
+        path: "updateRecipe/:id",
         Component: UpdateRecipe
+      },
+      {
+        path: "signup",
+        Component: Signup
+      },
+      {
+        path: "signin",
+        Component: Signin
+      },
+      {
+        path: "users",
+        loader: () => fetch('http://localhost:5000/users'),
+        Component: Users
       }
     ]
   },
@@ -35,6 +58,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <RouterProvider router={router} />
+     <AuthProvider>
+      <RouterProvider router={router} />
+     </AuthProvider>
   </StrictMode>,
 )
