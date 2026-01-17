@@ -15,25 +15,36 @@ import Signup from './Components/layouts/Signup.jsx';
 import Signin from './Components/layouts/Signin.jsx';
 import AuthProvider from './Components/context/AuthProvider.jsx';
 import Users from './Components/Users.jsx';
+import Footer from './Components/Footer.jsx';
+import RecipeCard from './Components/RecipeCard.jsx';
+import RecipeSection from './Components/RecipeSection.jsx';
+import UserProfile from './Components/Routes/UserProfile.jsx';
+import PrivateRoutes from './Components/Routes/PrivateRoutes.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
-    children:[
+    children: [
       {
         index: true,
+        path: "/",
         loader: () => fetch('http://localhost:5000/recipes'),
         Component: Home
+      },
+      {
+        path: "contact",
+        Component: Footer
       },
       {
         path: "add-recipe",
         Component: AddRecipe
       },
+     
       {
         path: "recipe/:id",
         Component: RecipeDetails,
-        loader: ({params}) => fetch(`http://localhost:5000/recipes/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/recipes/${params.id}`)
       },
       {
         path: "updateRecipe/:id",
@@ -51,6 +62,10 @@ const router = createBrowserRouter([
         path: "users",
         loader: () => fetch('http://localhost:5000/users'),
         Component: Users
+      },
+      {
+        path: "profile",
+        element: <PrivateRoutes><UserProfile /></PrivateRoutes>
       }
     ]
   },
@@ -58,8 +73,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-     <AuthProvider>
+    <AuthProvider>
       <RouterProvider router={router} />
-     </AuthProvider>
+    </AuthProvider>
   </StrictMode>,
 )

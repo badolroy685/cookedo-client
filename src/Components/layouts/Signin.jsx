@@ -1,8 +1,11 @@
-import React, { use } from 'react';
+import React, { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
+import { Link, useNavigate } from 'react-router';
 
 const Signin = () => {
-    const { signInUser } = use(AuthContext);
+    const { signInUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const handleSignin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -24,6 +27,7 @@ const Signin = () => {
                     },
                     body: JSON.stringify(signINInfo)
                 })
+                navigate('/');
             })
             .catch(error => {
                 console.log(error.message);
@@ -32,7 +36,7 @@ const Signin = () => {
     return (
         <div className="card bg-base-100 mx-auto md:mt-50  md:mb-20 mt-40 mb-10 max-w-sm shrink-0 shadow-2xl">
             <div className="card-body">
-                <h1 className="text-5xl font-bold">Sign In!</h1>
+                <h1 className="text-5xl font-bold">Login!</h1>
                 <form onSubmit={handleSignin} className="fieldset">
                     <label className="label">Email</label>
                     <input type="email" name='email' className="input" placeholder="Email" />
@@ -40,7 +44,8 @@ const Signin = () => {
                     <label className="label">Password</label>
                     <input type="password" name='password' className="input" placeholder="Password" />
                     <div><a className="link link-hover">Forgot password?</a></div>
-                    <button className="btn btn-neutral mt-4">Sign In!</button>
+                    <button className="btn btn-neutral mt-4">Login!</button>
+                    <p>New to this site? Please <Link to='/signup' className='text-blue-500'> Sign Up</Link></p>
                 </form>
             </div>
         </div>

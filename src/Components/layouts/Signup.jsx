@@ -1,10 +1,20 @@
-import React, { use } from 'react';
+import React, { useContext, useState } from 'react';
 import AuthContext from '../context/AuthContext';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
+import { FaEye } from "react-icons/fa";
+import { FaRegEyeSlash } from "react-icons/fa";
+import { useNavigate } from 'react-router';
+
 
 
 const Signup = () => {
-    const { createUser } = use(AuthContext);
+    const { createUser } = useContext(AuthContext);
+    
+    const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
+
     console.log(createUser);
 
     const handleSignup = (e) => {
@@ -13,6 +23,14 @@ const Signup = () => {
         const formdata = new FormData(form);
         const { email, password, ...restFormData } = Object.fromEntries(formdata.entries());
         console.log(email, password, restFormData);
+        setErrorMessage('');
+
+        //password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+        if (passwordRegex.test(password) === false) {
+            setErrorMessage('Password must have one lowercase, one uppercase, one digit and 6 characters or longer');
+            return;
+        }
 
         createUser(email, password)
             .then(result => {
@@ -38,8 +56,11 @@ const Signup = () => {
                             Swal.fire({
                                 title: "Your account has been created!",
                                 icon: "success",
-                                draggable: true
+                                confirmButtonText: "Go to Home"
+                            }).then(() => {
+                                navigate('/');
                             });
+
                         }
                     })
             })
@@ -69,9 +90,27 @@ const Signup = () => {
                     <input type="email" name='email' className="input" placeholder="Email" />
 
                     <label className="label">Password</label>
-                    <input type="password" name='password' className="input" placeholder="Password" />
-                    <div><a className="link link-hover">Forgot password?</a></div>
+                    <div className='relative'>
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            name="password"
+                            className="input"
+                            placeholder="Password" />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className='btn btn-xs absolute ml-[-35px] mt-2'>
+                            {
+                                showPassword ? <FaRegEyeSlash /> : <FaEye />
+                            }
+                        </button>
+                    </div>
+                    
                     <button className="btn btn-neutral mt-4">Sign Up</button>
+                    <p>Already have an account? Please <Link to='/signin' className='text-blue-500'> Login</Link></p>
+                    {
+                        errorMessage && <p className='text-red-500'>{errorMessage}</p>
+                    }
                 </form>
             </div>
         </div>

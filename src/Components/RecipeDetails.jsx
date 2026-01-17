@@ -17,7 +17,7 @@ const RecipeDetails = () => {
   }
 
   return (
-  <div className="md:flex  mt-60 mb-10 container mx-auto px-40  ">
+  <div className="md:flex  md:mt-60 mb-10 mt-44 px-10 container mx-auto md:px-40  ">
       <div className=" bg-white shadow-md    p-6  text-gray-900">
      
       <h1 className="text-3xl font-semibold mb-3 ">{recipe.title}</h1>

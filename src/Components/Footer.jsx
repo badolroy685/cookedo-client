@@ -5,7 +5,7 @@ import { FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
     return (
-        <div className="relative z-100 h-full w-full py-16 ">
+        <div id='footer' className="relative z-100 h-full w-full py-16 ">
             <img
                 src="https://i.ibb.co/bMj2M7vC/1702-m10-i304-n005-F-c06-551922376-White-doodle-vegetables-and-fruits-isolated-on-blackboard-seamles.jpg"
                 className="absolute inset-0 w-full h-full object-cover opacity-5 "

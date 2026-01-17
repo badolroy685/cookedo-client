@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import { IoHeart } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import AuthContext from './context/AuthContext';
 
 const RecipeCard = ({ recipe }) => {
+    const {user} = use(AuthContext)
 
     if (!recipe || Object.keys(recipe).length === 0) {
         return null;
@@ -86,9 +88,12 @@ const RecipeCard = ({ recipe }) => {
                             ? instruction.slice(0, 220) + (instruction.length > 220 ? '...' : '')
                             : 'No instructions provided.'}
                     </p>
-                   <Link to={`/recipe/${_id}`} className="w-full block">
+                   {
+                    user && <>
+                    <Link to={`/recipe/${_id}`} className="w-full block">
                     <button className="btn w-full bg-yellow-400 border-none text-gray-800 mt-5">See Details</button>
-                   </Link>
+                   </Link></>
+                   }
                     <button onClick={() => handleDelete(_id)} className="btn btn-error ">Delete Recipe</button>
                     <Link to={`updateRecipe/${_id}`}>
                     <button className='w-full bg-green-400 border-none btn text-gray-800'>Update Recipe</button>
