@@ -9,7 +9,7 @@ const Banner = () => {
         <div className="relative h-full w-full  ">
 
             <img
-                src="https://i.ibb.co/CKhHKnsR/flat-lay-thanksgiving-food-border-assortment-with-copy-space.jpg"
+                src="https://i.ibb.co.com/6Rvcb00H/flat-lay-thanksgiving-food-border-assortment-with-copy-space-1.jpg"
                 className="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none"
                 alt=""
             />
