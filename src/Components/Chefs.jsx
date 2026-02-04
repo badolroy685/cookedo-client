@@ -5,7 +5,7 @@ const Chefs = () => {
   const [showAll, setShowAll] = useState(false);
 
   useEffect(() => {
-    fetch("/public/chefs.json")
+    fetch("/chefs.json")
       .then(res => res.json())
       .then(data => setChefs(data));
   }, []);
