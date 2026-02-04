@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         index: true,
         path: "/",
-        loader: () => fetch('http://localhost:5000/recipes'),
+        loader: () => fetch('https://cookedo-server.vercel.app/recipes'),
         Component: Home
       },
       {
@@ -38,13 +38,13 @@ const router = createBrowserRouter([
       },
       {
         path: "add-recipe",
-        Component: AddRecipe
+        element: <PrivateRoutes><AddRecipe /></PrivateRoutes>
       },
      
       {
         path: "recipe/:id",
         Component: RecipeDetails,
-        loader: ({ params }) => fetch(`http://localhost:5000/recipes/${params.id}`)
+        loader: ({ params }) => fetch(`https://cookedo-server.vercel.app/recipes/${params.id}`)
       },
       {
         path: "updateRecipe/:id",
@@ -60,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        loader: () => fetch('http://localhost:5000/users'),
+        loader: () => fetch('https://cookedo-server.vercel.app/users'),
         Component: Users
       },
       {

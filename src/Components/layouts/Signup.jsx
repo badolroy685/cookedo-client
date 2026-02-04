@@ -43,7 +43,7 @@ const Signup = () => {
                     lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
                 //SAVE USER PROFILE TO DB
-                fetch('http://localhost:5000/users', {
+                fetch('https://cookedo-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

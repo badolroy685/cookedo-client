@@ -6,7 +6,7 @@
 //   const [recipes, setRecipes] = useState([]);
 
 //   useEffect(() => {
-//     fetch("http://localhost:5000/recipes")
+//     fetch("https://cookedo-server.vercel.app/recipes")
 //       .then(res => res.json())
 //       .then(data => setRecipes(data));
 //   }, []);

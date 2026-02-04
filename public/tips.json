@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Knife Skills",
+    "icon": "🔪",
+    "description": "Learn proper knife handling, chopping techniques, and safety tips to cook faster and safer."
+  },
+  {
+    "id": 2,
+    "title": "Spice Pairing",
+    "icon": "🌶️",
+    "description": "Understand which spices work best together to enhance flavor without overpowering dishes."
+  },
+  {
+    "id": 3,
+    "title": "Beginner Mistakes",
+    "icon": "🚫",
+    "description": "Avoid common cooking mistakes beginners often make and improve your dishes instantly."
+  }
+]

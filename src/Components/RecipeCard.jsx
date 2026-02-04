@@ -37,7 +37,7 @@ const RecipeCard = ({ recipe }) => {
         }).then((result) => {
             console.log(result.isConfirmed);
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/recipes/${_id}`, {
+                fetch(`https://cookedo-server.vercel.app/recipes/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -94,10 +94,14 @@ const RecipeCard = ({ recipe }) => {
                     <button className="btn w-full bg-yellow-400 border-none text-gray-800 mt-5">See Details</button>
                    </Link></>
                    }
-                    <button onClick={() => handleDelete(_id)} className="btn btn-error ">Delete Recipe</button>
-                    <Link to={`updateRecipe/${_id}`}>
+                   {
+                    user && <> <button onClick={() => handleDelete(_id)} className="btn btn-error ">Delete Recipe</button></>
+                   }
+                   {
+                    user && <> <Link to={`updateRecipe/${_id}`}>
                     <button className='w-full bg-green-400 border-none btn text-gray-800'>Update Recipe</button>
-                    </Link>
+                    </Link></>
+                   }
                 
                 </div>
             </div>

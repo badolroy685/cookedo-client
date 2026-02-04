@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Gordon Blaze",
+    "image": "https://i.ibb.co.com/rGnFFW60/Gluten-Free-Egg-Muffins-with-Spinach-and-Feta-7-Power-Bites.jpg",
+    "specialty": "Italian Cuisine",
+    "rating": 4.8,
+    "bio": "Passionate Italian chef known for authentic pasta and wood-fired pizzas."
+  },
+  {
+    "id": 2,
+    "name": "Ayesha Rahman",
+    "image": "https://i.ibb.co.com/QLxqw5Q/Happy-chef-in-white-uniform-holding-spatula-and-whisk-ideal-for-food-blogs.jpg",
+    "specialty": "Bangladeshi Cuisine",
+    "rating": 4.7,
+    "bio": "Expert in traditional Bangladeshi dishes with rich spices and flavors."
+  },
+  {
+    "id": 3,
+    "name": "Marco Silva",
+    "image": "https://i.ibb.co.com/ZzFBfXJ5/Photo-of-Cook-Created-with-AI.jpg",
+    "specialty": "Mexican Cuisine",
+    "rating": 4.6,
+    "bio": "Loves bold Mexican flavors, tacos, and homemade sauces."
+  },
+  {
+    "id": 4,
+    "name": "Sophia Laurent",
+    "image": "https://i.ibb.co.com/b5THwQsj/Fire-Noodle-Rice-Paper-Dumplings-Cravefuly.jpg",
+    "specialty": "French Cuisine",
+    "rating": 4.9,
+    "bio": "Classically trained French chef specializing in desserts and fine dining."
+  },
+  {
+    "id": 5,
+    "name": "Kenji Tanaka",
+    "image": "https://i.ibb.co.com/ch2c4SZG/Woman.jpg",
+    "specialty": "Japanese Cuisine",
+    "rating": 4.8,
+    "bio": "Sushi master focused on precision, freshness, and balance."
+  },
+  {
+    "id": 6,
+    "name": "Liam O'Connor",
+    "image": "https://i.ibb.co.com/2YcNS5TJ/Tasty-Recipes-New-York-NY.jpg",
+    "specialty": "Continental Cuisine",
+    "rating": 4.5,
+    "bio": "Modern continental chef blending European flavors creatively."
+  },
+  {
+    "id": 7,
+    "name": "Fatima Noor",
+    "image": "https://i.ibb.co.com/TBsM9GFG/Innovative-Chef-with-a-Modern-Flair.jpg",
+    "specialty": "Middle Eastern Cuisine",
+    "rating": 4.6,
+    "bio": "Specialist in kebabs, mezze, and traditional Middle Eastern dishes."
+  },
+  {
+    "id": 8,
+    "name": "Carlos Mendoza",
+    "image": "https://i.ibb.co.com/5gDqz51Q/download-7.jpg",
+    "specialty": "Spanish Cuisine",
+    "rating": 4.9,
+    "bio": "Renowned for paella, tapas, and Mediterranean flavors."
+  }
+]

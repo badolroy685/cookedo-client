@@ -37,7 +37,7 @@ const AddRecipe = () => {
         console.log('Form data object:', data);
 
         //send data to  the db
-        fetch('http://localhost:5000/recipes', {
+        fetch('https://cookedo-server.vercel.app/recipes', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -20,7 +20,7 @@ const Signin = () => {
                     lastSignInTime: result.user?.metadata?.lastSignInTime
                 }
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://cookedo-server.vercel.app/users', {
                     method: 'PATCH',
                     headers: {
                         'content-type': 'application/json'

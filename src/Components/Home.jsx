@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 import Banner from "./Banner";
 import AddRecipe from "./AddRecipe";
 import RecipeSection from "./RecipeSection";
+import AuthContext from "./context/AuthContext";
+import Chefs from "./Chefs";
+import CookingTips from "./CookingTips";
+import About from "./About";
+
 
 const Home = () => {
+    const {user} = use(AuthContext);
     const recipes = useLoaderData() || [];
     const [showAll, setShowAll] = useState(false);
 
@@ -18,6 +24,7 @@ const Home = () => {
     return (
         <div>
             <Banner />
+            <About></About>
 
             <RecipeSection
                 id="top-recipes"
@@ -34,8 +41,13 @@ const Home = () => {
                     recipes={recipes}
                 />
             )}
-
-            <AddRecipe />
+            {
+                user && <AddRecipe />
+            }
+           
+            <Chefs />
+            <CookingTips></CookingTips>
+           
         </div>
     );
 };
