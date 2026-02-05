@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-        <div className='flex max-w-7xl mx-auto py-10 px-12  bg-base-200  '>
+        <div id='about' className='flex max-w-7xl mx-auto py-10 px-12  bg-base-200  '>
             <div className='   flex flex-col md:p-12  gap-4 justify-center max-w-2/4 '>
                 <h4 className='font-bold text-2xl text-yellow-500'>COOKEDO</h4>
                 <h1 className='text-5xl font-semibold'>Few Words About Us</h1>

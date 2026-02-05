@@ -1,16 +1,17 @@
 import React, { use, useState } from 'react';
 import { TiThMenu } from "react-icons/ti";
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink,  } from 'react-router';
 import AuthContext from './context/AuthContext';
+import Users from './Users';
 // import '../App.css'; // Assuming you have a CSS file for styles
 
 
 
 const Header = () => {
-
+    
     const [isOpen, setIsOpen] = useState(false);
     const { user, signoutUser } = use(AuthContext);
-    console.log(user);
+    // console.log(user);
 
     const handleSignOut = () => {
         signoutUser()
@@ -59,7 +60,17 @@ const Header = () => {
                         {/* Desktop Menu - hidden on small, shown on medium and up */}
                         <ul className="hidden md:flex space-x-4 text-xl ">
                             <li className='hover'><Link to='/'>Home</Link></li>
-                            <li className='hover'><Link to='/'>About</Link></li>
+                            <li className='hover block'>
+                                <button
+                                    onClick={() =>
+                                        document
+                                            .getElementById("about")
+                                            ?.scrollIntoView({ behavior: "smooth" })
+                                    }
+                                >
+                                    About
+                                </button>
+                            </li>
                             <li><a href="#top-recipes">Recipes</a></li>
 
                             {
@@ -87,7 +98,17 @@ const Header = () => {
                     {isOpen && (
                         <ul className=" bg-gray-800 mr-58 py-5 pl-5 pr-16 rounded-2xl  border-[2px] border-[#ff611d] md:hidden mt-4 space-y-2 md:text-xl">
                             <li className='hover'><Link to='/'>Home</Link></li>
-                            <li className='hover'><Link to='/'>About</Link></li>
+                            <li className='hover block'>
+                                <button
+                                    onClick={() =>
+                                        document
+                                            .getElementById("about")
+                                            ?.scrollIntoView({ behavior: "smooth" })
+                                    }
+                                >
+                                    About
+                                </button>
+                            </li>
                             <li><a href="#top-recipes">Recipes</a></li>
 
                             {

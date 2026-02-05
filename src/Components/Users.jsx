@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router';
 const Users = () => {
     const initialUsers = useLoaderData();
     // console.log(initialUsers);
-    const [users, setUsers] = useState(initialUsers);
+    const [users] = useState(initialUsers);
     return (
         <div className='mt-36 p-8 md:mt-20 md:p-25'>
             <h2 className='text-3xl'> Users: {initialUsers.length} </h2>

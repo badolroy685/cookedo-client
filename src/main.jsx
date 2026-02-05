@@ -20,6 +20,9 @@ import RecipeCard from './Components/RecipeCard.jsx';
 import RecipeSection from './Components/RecipeSection.jsx';
 import UserProfile from './Components/Routes/UserProfile.jsx';
 import PrivateRoutes from './Components/Routes/PrivateRoutes.jsx';
+import About from './Components/About.jsx';
+import Error from './Components/Routes/Error.jsx';
+import Header from './Components/Header.jsx';
 
 const router = createBrowserRouter([
   {
@@ -37,10 +40,15 @@ const router = createBrowserRouter([
         Component: Footer
       },
       {
+        path: "navbar",
+        loader: () => fetch('https://cookedo-server.vercel.app/users'),
+        Component: Header
+      },
+      {
         path: "add-recipe",
         element: <PrivateRoutes><AddRecipe /></PrivateRoutes>
       },
-     
+
       {
         path: "recipe/:id",
         Component: RecipeDetails,
@@ -65,10 +73,21 @@ const router = createBrowserRouter([
       },
       {
         path: "profile",
+        loader: () => fetch('https://cookedo-server.vercel.app/users'),
         element: <PrivateRoutes><UserProfile /></PrivateRoutes>
-      }
+      },
+      {
+        path: "about",
+        Component: About
+      },
+
     ]
+
   },
+  {
+    path: "*",
+    element: <Error />,
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(
